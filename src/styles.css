@@ -1,0 +1,25 @@
+/* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif; 
+}
+
+@font-face {
+  font-family: 'backstreet';
+  src: url("assets/fonts/backstreet/Backstreet.ttf");
+  /* src: url("assets/fonts/anydore/anydore.ttf") format("truetype"); */
+  font-weight: normal;
+  font-style: normal;
+}
+
+.app-name{
+  font-family: backstreet;
+  font-size: 40px !important;
+  padding-top: 12px;
+}
+
+/* .container{
+  margin: 20px;
+} */

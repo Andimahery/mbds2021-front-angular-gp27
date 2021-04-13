@@ -1,0 +1,14 @@
+/* .container {
+  display: flex;
+  flex-direction: column;
+} */
+
+.ajouterBtn {
+  /* align-self: flex-end; */
+  float: right;
+}
+/* 
+.flex{
+  display: flex;
+  flex-direction: column;
+} */

@@ -1,0 +1,65 @@
+<main>
+  <div class="row">
+    <div class="col-sm-6">
+      <h3>Liste des assignments</h3>
+    </div>
+    <div class="col-sm-6">
+      <a routerLink="/add" class="ajouterBtn">
+        <button mat-flat-button color="accent">
+          Ajouter un assignment
+        </button>
+      </a>
+    </div>
+  </div>
+  <mat-divider></mat-divider>
+
+  <mat-list *ngFor="let a of assignments">
+    <nav>
+      <a routerLink="/assignment/{{a.id}}">
+        <h3 mat-subheader>{{a.dateDeRendu | date}}</h3>
+        <mat-list-item>
+          <mat-divider></mat-divider>
+
+          <p *ngIf="a.rendu; else nonsoumis" appRendu>
+            {{a.nom}}, rendu par l'élève.
+          </p>
+          <ng-template #nonsoumis>
+            <p appNonRendu>
+              {{a.nom}}, non encore rendu par l'élève.
+            </p>
+          </ng-template>
+
+        </mat-list-item>
+      </a>
+    </nav>
+  </mat-list>
+  <br>
+  <div style="position: relative; display: inline-block;">
+    <mat-form-field>
+      <mat-select placeholder="Limit" [(ngModel)]="limit">
+        <mat-option *ngFor="let size of sizeList" [value]="size">{{size}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+    &nbsp;
+    <button mat-flat-button color="accent" [disabled]="!hasPrevPage" (click)="plusMoins(-1)">Précedent</button>
+    &nbsp;
+    <ng-container *ngFor="let page of listePage">
+      <button mat-flat-button color="accent" (click)="redirect(page)">{{page}}</button>&nbsp;
+    </ng-container>
+    <label>...</label>
+    &nbsp;
+    <button mat-flat-button color="accent" (click)="redirect(totalPages)">{{totalPages}}</button>&nbsp;
+    <button mat-flat-button color="accent" [disabled]="!hasNextPage" (click)="plusMoins(1)">Suivant</button>
+  </div>
+
+  <!-- <div>
+    <mat-paginator [length]="totalDocs" [pageSize]="page" [pageSizeOptions]="sizeList">
+    </mat-paginator>
+  </div> -->
+
+  <br>
+  <label>Nombre total d'assignments: {{totalDocs}}</label>
+  <br>
+  <br>
+  <br>
+</main>

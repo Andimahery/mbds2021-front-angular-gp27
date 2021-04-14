@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { LOCALE_ID, NgModule } from '@angular/core';
 import { BrowserModule, Title } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
@@ -40,7 +40,9 @@ import { MenuComponent } from './menu/menu.component';
 import { LoginComponent } from './login/login.component';
 import { MatieresComponent } from './matieres/matieres.component';
 import { RegisterComponent } from './register/register.component';
-
+import { registerLocaleData } from '@angular/common';
+import localeFr from '@angular/common/locales/fr';
+registerLocaleData(localeFr, 'fr');
 
 const routes: Routes = [
   {
@@ -118,6 +120,7 @@ const routes: Routes = [
   ],
   providers: [
     Title,
+    { provide: LOCALE_ID, useValue: "fr-FR" },
     { provide: MAT_SNACK_BAR_DEFAULT_OPTIONS, useValue: { duration: 2500 } }
   ],
   bootstrap: [AppComponent]

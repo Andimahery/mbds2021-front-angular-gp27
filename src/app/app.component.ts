@@ -38,7 +38,7 @@ export class AppComponent {
       });
   }
 
-  login() {
+ /* login() {
     // si je suis pas loggé, je me loggue, sinon, si je suis
     // loggé je me déloggue et j'affiche la page d'accueil
 
@@ -52,7 +52,7 @@ export class AppComponent {
       // je ne suis pas loggé, je me loggue
       this.authService.logIn("admin", "toto");
     }
-  }
+  }*/
 
   peuplerBD() {
     // version naive et simple

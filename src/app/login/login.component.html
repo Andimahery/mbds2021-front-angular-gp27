@@ -1,0 +1,35 @@
+   <mat-card class="example-card">
+      <mat-card-title color="primary">Connexion</mat-card-title>
+      <form ngForm [formGroup]="loginForm" class="form" (submit)="onSubmit();">
+        <mat-form-field>
+          <input matInput placeholder="Email" required [(ngModel)]="email" formControlName="email">
+
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput placeholder="Mot de passe"  type="password" required [(ngModel)]="password" class="example-full-width" formControlName="password">
+        </mat-form-field>
+
+        <button mat-stroked-button color="primary" [disabled]="!loginForm.valid">
+          Se connecter
+        </button>
+        <a  mat-stroked-button color="primary" routerLink="/register">S'inscrire</a>
+        <!-- form validation error zone -->
+        <p class="red">{{error}}</p>
+        <!------ email error -------->
+        <div
+          *ngIf="loginForm.controls.email.errors && (loginForm.controls.email.dirty || loginForm.controls.email.touched)">
+          <p class="red" [hidden]="!loginForm.controls.email.errors">
+            Adresse email invalide
+          </p>
+        </div>
+        <!------ password error -------->
+        <div
+          *ngIf="loginForm.controls.password.errors && (loginForm.controls.password.dirty || loginForm.controls.password.touched)">
+          <p class="red" [hidden]="!loginForm.controls.password.errors">
+            Le champ du mot de passe est vide
+          </p>
+        </div>
+      </form>
+    </mat-card>
+
+

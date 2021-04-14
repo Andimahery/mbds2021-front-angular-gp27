@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AssignmentsService } from '../shared/assignments.service';
+import { MatiereService } from '../shared/matiere.service';
+import { Matiere } from '../matieres/matiere.model';
 import { Assignment } from './assignment.model';
 
 @Component({
@@ -24,6 +26,7 @@ export class AssignmentsComponent implements OnInit {
   // on injecte le service de gestion des assignments
   constructor(
     private assignmentsService: AssignmentsService,
+    private matiereService: MatiereService,
     private router: Router,
     private route: ActivatedRoute,
   ) { }
@@ -77,9 +80,8 @@ export class AssignmentsComponent implements OnInit {
       this.listePage = [];
       this.listePage.push(1);
       if (this.page != 1 && this.page != this.totalPages) this.listePage.push(this.page);
-      if (this.page < this.totalPages)this.listePage.push(this.page + 1);
-
-      console.log("données reçues");
+      if (this.page < this.totalPages) this.listePage.push(this.page + 1);
+      console.log(data.docs);
     });
   }
 

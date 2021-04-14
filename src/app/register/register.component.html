@@ -1,0 +1,63 @@
+<mat-card class="example-card">
+    <mat-card-title color="primary">S'inscrire</mat-card-title>
+    <form ngForm   class="form" (submit)="onSubmit();">
+        <mat-form-field>
+            <input matInput placeholder="Nom" required [(ngModel)]="name" name="name">
+          </mat-form-field>
+      <mat-form-field>
+        <input matInput placeholder="Email" required [(ngModel)]="email" name="email">
+
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput placeholder="Mot de passe"  type="password" required [(ngModel)]="password" class="example-full-width" name="password">
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Role</mat-label>
+        <select matNativeControl  required [(ngModel)]="role"  name="role">
+          <option value="admin">Administrateur</option>
+          <option value="moderateur">Moderateur</option>
+        </select>
+      </mat-form-field>
+
+      <mat-form-field>
+        <input matInput placeholder="Mot de passe"  type="confirmPassword" required [(ngModel)]="confirmPassword" class="example-full-width" name="confirmPassword">
+      </mat-form-field>
+
+      <button mat-stroked-button color="primary"  >
+        S'inscrire
+      </button>
+  <!------
+      <p class="red">{{error}}</p>
+     nom error --------
+      <div *ngIf="signinForm.controls.name.errors && (signinForm.controls.name.dirty || signinForm.controls.name.touched)">
+       <p class="red" [hidden]="!signinForm.controls.name.errors">
+         Le champs nom est vide
+       </p>
+     </div>
+  ------ email error ----
+     <div *ngIf="signinForm.controls.email.errors && (signinForm.controls.email.dirty || signinForm.controls.email.touched)">
+       <p class="red" [hidden]="!signinForm.controls.email.errors">
+         Le champs  email est invalide
+       </p>
+     </div>
+----
+     <div *ngIf="signinForm.controls.role.errors && (signinForm.controls.role.dirty || signinForm.controls.role.touched)">
+        <p class="red" [hidden]="!signinForm.controls.role.errors">
+          Le champs role est vide
+        </p>
+      </div>
+   ------ password error --------
+     <div *ngIf="signinForm.controls.password.errors && (signinForm.controls.password.dirty || signinForm.controls.password.touched)">
+       <p class="red" [hidden]="!signinForm.controls.password.errors">
+         Le champs mot de passe est vide
+       </p>
+     </div>
+     ------ confirmPassword error -----
+      <div *ngIf="signinForm.controls.confirmPassword.errors && (signinForm.controls.confirmPassword.dirty || signinForm.controls.confirmPassword.touched)">
+       <p class="red" [hidden]="!signinForm.controls.confirmPassword.errors">
+         Le champs confirmer le mot de passe est vide
+       </p>
+     </div>--->
+    </form>
+  </mat-card>

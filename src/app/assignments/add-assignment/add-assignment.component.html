@@ -49,6 +49,26 @@
       </div>
     </mat-step>
 
+    <mat-step formGroupName="2" [stepControl]="formArray?.get([2])">
+      <ng-template matStepLabel>
+        <div>Choisissez une matière</div>
+      </ng-template>
+      <mat-form-field appearance="fill">
+        <mat-label>Matiere</mat-label>
+        <select matNativeControl   formControlName="idMatiere" required [(ngModel)]="idMatiere">
+          <option *ngFor="let m of matieres" [value]="m._id">
+            {{m.matiere}}
+          </option>
+        </select>
+      </mat-form-field>
+      <br><mat-divider></mat-divider><br>
+      <div>
+        <button type="button" mat-raised-button matStepperPrevious>Précédent</button>
+        &nbsp;
+        <button type="button" mat-raised-button matStepperNext>Suivant</button>
+      </div>
+    </mat-step>
+
       <mat-step>
         <ng-template matStepLabel>Confirmation</ng-template>
         <p>Terminé.</p>

@@ -1,0 +1,19 @@
+.form {
+    display:flex;
+    flex-direction: column;
+    margin:5px;
+    height:100%;
+  }
+.col{
+    height:100%;
+
+}
+
+.example-card {
+    max-width: 400px;
+  }
+
+.red{
+    color:red;
+    font-size: 13px;
+}

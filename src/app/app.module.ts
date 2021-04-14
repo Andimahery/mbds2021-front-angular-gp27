@@ -20,6 +20,9 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatStepperModule } from '@angular/material/stepper';
 import { MatSnackBarModule, MAT_SNACK_BAR_DEFAULT_OPTIONS } from '@angular/material/snack-bar';
 
+/////
+import {MatTableModule } from "@angular/material/table";
+
 
 import { AssignmentsComponent } from './assignments/assignments.component';
 import { RenduDirective } from './shared/rendu.directive';
@@ -34,6 +37,9 @@ import { HttpClientModule } from '@angular/common/http';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { MenuComponent } from './menu/menu.component';
+import { LoginComponent } from './login/login.component';
+import { MatieresComponent } from './matieres/matieres.component';
+import { RegisterComponent } from './register/register.component';
 
 
 const routes: Routes = [
@@ -41,8 +47,14 @@ const routes: Routes = [
     // indique que http://localhost:4200 sans rien ou avec un "/" à la fin
     // doit afficher le composant AssignmentsComponent (celui qui affiche la liste)
     path: "",
-    redirectTo: "/home",
-    pathMatch: "full"
+    component: LoginComponent,
+    //redirectTo: "/home",
+    //pathMatch: "full"
+  },
+  {
+    // idem avec  http://localhost:4200/home
+    path: "register",
+    component: RegisterComponent,
   },
   {
     // idem avec  http://localhost:4200/home
@@ -65,7 +77,11 @@ const routes: Routes = [
     component: EditAssigmentComponent,
     data: { title: "Modification d'un assignment" },
     canActivate: [AuthGuard]
-  }
+  },  {
+    path: "matieres",
+    component: MatieresComponent,
+    data: { title: "Listes des matieres" }
+  },
 ]
 @NgModule({
   declarations: [
@@ -78,7 +94,10 @@ const routes: Routes = [
     EditAssigmentComponent,
     HeaderComponent,
     FooterComponent,
-    MenuComponent
+    MenuComponent,
+    LoginComponent,
+    MatieresComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
@@ -94,6 +113,7 @@ const routes: Routes = [
     MatToolbarModule,
     MatSnackBarModule,
     MatStepperModule,
+    MatTableModule,
     RouterModule.forRoot(routes), HttpClientModule
   ],
   providers: [

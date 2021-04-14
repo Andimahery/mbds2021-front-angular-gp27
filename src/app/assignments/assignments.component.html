@@ -3,7 +3,14 @@
     <div class="col-sm-6">
       <h3>Liste des assignments</h3>
     </div>
-    <div class="col-sm-6">
+    <div class="col-sm-3">
+      <a routerLink="/matieres" class="ajouterBtn">
+        <button mat-flat-button color="primary">
+          Liste des matieres
+        </button>
+      </a>
+    </div>
+    <div class="col-sm-3">
       <a routerLink="/add" class="ajouterBtn">
         <button mat-flat-button color="accent">
           Ajouter un assignment
@@ -27,12 +34,35 @@
             <p appNonRendu>
               {{a.nom}}, non encore rendu par l'élève.
             </p>
-          </ng-template>
-
+          </ng-template> 
         </mat-list-item>
       </a>
     </nav>
   </mat-list>
+
+  <!--<mat-card class="example-card" *ngFor="let a of assignments">
+    <mat-card-header>
+      <div mat-card-avatar class="example-header-image"></div>
+      <mat-card-title><a routerLink="/assignment/{{a.id}}">{{a.nom}}</a></mat-card-title>
+      <mat-card-subtitle>{{a.dateDeRendu | date}}</mat-card-subtitle>
+    </mat-card-header>
+    <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
+    <mat-card-content>
+      <p *ngIf="a.rendu; else nonsoumis" appRendu>
+        rendu par l'élève.
+      </p>
+      <ng-template #nonsoumis>
+        <p appNonRendu>
+          non encore rendu par l'élève.
+        </p>
+      </ng-template>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-button>LIKE</button>
+      <button mat-button>SHARE</button>
+    </mat-card-actions>
+  </mat-card>-->
+
   <br>
   <div style="position: relative; display: inline-block;">
     <mat-form-field>

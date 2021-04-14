@@ -1,0 +1,10 @@
+.red{
+    color:red;
+    font-size: 13px;
+}
+.form {
+    display:flex;
+    flex-direction: column;
+    margin:5px;
+    height:100%;
+  }

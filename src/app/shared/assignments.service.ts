@@ -145,6 +145,10 @@ export class AssignmentsService {
       nouvelAssignment.nom = a.nom;
       nouvelAssignment.dateDeRendu = new Date(a.dateDeRendu);
       nouvelAssignment.rendu = a.rendu;
+      nouvelAssignment.remarque = a.remarque;
+      nouvelAssignment.note = a.note;
+      nouvelAssignment.auteur = a.auteur;
+      nouvelAssignment.matiere = a.matiere;
 
       appelsVersAddAssignment.push(this.addAssignment(nouvelAssignment));
     });

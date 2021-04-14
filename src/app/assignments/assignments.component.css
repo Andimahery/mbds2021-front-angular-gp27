@@ -12,3 +12,23 @@
   display: flex;
   flex-direction: column;
 } */
+
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+  height: 100%;
+}
+
+.card {
+  margin-top: 28px;
+  max-width: 250px;
+  margin-left: 28px;
+}
+
+.prof-image{
+  height: 40px;
+  width: 40px;
+  float: right;
+}

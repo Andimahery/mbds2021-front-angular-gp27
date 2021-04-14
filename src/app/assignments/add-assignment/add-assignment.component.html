@@ -1,22 +1,3 @@
-<!-- <form ngForm #formAssignment class="form" (submit)="onSubmit($event); formAssignment.reset();">
-  <mat-form-field>
-    <input matInput placeholder="Nom du devoir" required [(ngModel)]="nom" name="nom">
-  </mat-form-field>
-
-  <mat-form-field appearance="fill">
-    <mat-label>Choisissez une date</mat-label>
-    <input matInput [matDatepicker]="picker" required [(ngModel)]="dateDeRendu" name="date">
-
-    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-
-    <mat-datepicker #picker></mat-datepicker>
-  </mat-form-field>
-
-  <button mat-stroked-button color="primary">
-    Ajouter un devoir
-  </button>
-</form> -->
-
 <form [formGroup]="formGroup" (ngSubmit)="onSubmit()">
   <mat-horizontal-stepper [linear]="isLinear" formArrayName="formArray" #stepper>
     <mat-step formGroupName="0" [stepControl]="formArray?.get([0])">
@@ -84,36 +65,3 @@
       </mat-step>
   </mat-horizontal-stepper>
 </form>
-
-<!-- <mat-horizontal-stepper [linear]="isLinear" #stepper>
-  <mat-step [stepControl]="firstFormGroup">
-    <form [formGroup]="firstFormGroup">
-      <ng-template matStepLabel>Remplissez le nom du devoir</ng-template>
-      <mat-form-field>
-        <mat-label>Nom du devoir</mat-label>
-        <input matInput placeholder="" formControlName="nom" required>
-      </mat-form-field>
-      <br><mat-divider></mat-divider><br>
-      <div>
-        <button mat-raised-button matStepperNext>Suivant</button>
-      </div>
-    </form>
-  </mat-step>
-  <mat-step [stepControl]="secondFormGroup" label="Remplissez la date de rendu du devoir">
-    <form [formGroup]="secondFormGroup">
-      <mat-form-field>
-        <mat-label>Choisissez une date</mat-label>
-        <input matInput [matDatepicker]="picker" formControlName="dateDeRendu" required>
-        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-        <mat-datepicker #picker></mat-datepicker>
-      </mat-form-field>
-      <br><mat-divider></mat-divider><br>
-      <div>
-        <button mat-raised-button matStepperPrevious>Précédent</button>
-        &nbsp;
-        <button *ngIf="" mat-raised-button matStepperNext>Suivant</button>
-        <button mat-raised-button color="primary" matStepperNext>Ajouter un devoir</button>
-      </div>
-    </form>
-  </mat-step>
-</mat-horizontal-stepper> -->

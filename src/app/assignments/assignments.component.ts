@@ -103,6 +103,15 @@ export class AssignmentsComponent implements OnInit {
     });
   }
 
+  setPage(val) {
+    this.router.navigate(['/home'], {
+      queryParams: {
+        page: val,
+        limit: this.limit
+      }
+    });
+  }
+
   onDeleteAssignment(event) {
     // event = l'assignment à supprimer
 

@@ -20,8 +20,8 @@
   </div>
   <mat-divider></mat-divider>
 
-  <mat-list *ngFor="let a of assignments">
-    <nav>
+  <mat-list>
+    <!-- <nav>
       <a routerLink="/assignment/{{a.id}}">
         <h3 mat-subheader>{{a.dateDeRendu | date}}</h3>
         <mat-list-item>
@@ -37,8 +37,66 @@
           </ng-template> 
         </mat-list-item>
       </a>
-    </nav>
+    </nav> -->
+    <div class="row">
+      <mat-card *ngFor="let a of assignments" class="card col-sm-6">
+        <a routerLink="/assignment/{{a.id}}">
+          <mat-card-header>
+            <div mat-card-avatar class="header-image">
+              <img src="{{a.matiere.pathImage}}" alt="{{a.matiere.nom}}" class="center">
+            </div>
+            <mat-card-title>{{a.nom}}</mat-card-title>
+            <mat-card-subtitle>{{a.matiere.nom}}</mat-card-subtitle>
+          </mat-card-header>
+        </a>
+        <mat-card-content>
+          <span *ngIf="a.rendu; else nonsoumis" appRendu>
+            Rendu par l'élève.
+          </span>
+          <ng-template #nonsoumis>
+            <span appNonRendu>
+              Pas encore rendu par l'élève.
+            </span>
+          </ng-template>
+        </mat-card-content>
+        <mat-card-actions>
+          <div class="row">
+            <div class="col-sm-8">
+              <h3 mat-subheader>{{a.dateDeRendu | date}}</h3>
+            </div>
+            <div class="col-sm-4">
+              <div class="prof-image">
+                <img src="{{a.matiere.prof.pathProfesseur}}" alt="{{a.matiere.prof.nomProfesseur}}" class="center">
+              </div>
+            </div>
+          </div>
+        </mat-card-actions>
+      </mat-card>
+    </div>
   </mat-list>
+
+  <!-- <mat-card class="example-card">
+    <mat-card-header>
+      <div mat-card-avatar class="example-header-image">
+        <img src="{{a.matiere.pathImage}}" alt="Le logo de MDN avec une silhouette de tête de dinosaure.">
+      </div>
+      <mat-card-title>{{a.nom}}</mat-card-title>
+      <mat-card-subtitle>{{a.matiere.nom}}</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <p *ngIf="a.rendu; else nonsoumis" appRendu>
+        {{a.nom}}, rendu par l'élève.
+      </p>
+      <ng-template #nonsoumis>
+        <p appNonRendu>
+          {{a.nom}}, non encore rendu par l'élève.
+        </p>
+      </ng-template> 
+    </mat-card-content>
+    <mat-card-actions>
+      <h3 mat-subheader>{{a.dateDeRendu | date}}</h3>
+    </mat-card-actions>
+  </mat-card> -->
 
   <!--<mat-card class="example-card" *ngFor="let a of assignments">
     <mat-card-header>
@@ -71,7 +129,7 @@
       </mat-select>
     </mat-form-field>
     &nbsp;
-    <button mat-flat-button color="accent" [disabled]="!hasPrevPage" (click)="plusMoins(-1)">Précedent</button>
+    <button mat-flat-button color="accent" [disabled]="!hasPrevPage" (click)="setPage(prevPage)">Précedent</button>
     &nbsp;
     <ng-container *ngFor="let page of listePage">
       <button mat-flat-button color="accent" (click)="redirect(page)">{{page}}</button>&nbsp;
@@ -79,7 +137,7 @@
     <label>...</label>
     &nbsp;
     <button mat-flat-button color="accent" (click)="redirect(totalPages)">{{totalPages}}</button>&nbsp;
-    <button mat-flat-button color="accent" [disabled]="!hasNextPage" (click)="plusMoins(1)">Suivant</button>
+    <button mat-flat-button color="accent" [disabled]="!hasNextPage" (click)="setPage(nextPage)">Suivant</button>
   </div>
 
   <!-- <div>

@@ -19,13 +19,13 @@ export class AddAssignmentComponent implements OnInit {
   nom = '';
   dateDeRendu = null;
 
-  idMatiere='';
-  matieres:Matiere[];
+  idMatiere = '';
+  matieres: Matiere[];
 
   isLinear = true;
   formGroup: FormGroup;
   secondFormGroup: FormGroup;
-  
+
   /** Returns a FormArray with the name 'formArray'. */
   get formArray(): AbstractControl | null {
     return this.formGroup.get("formArray");
@@ -33,7 +33,7 @@ export class AddAssignmentComponent implements OnInit {
 
   constructor(
     private assignmentsService: AssignmentsService,
-    private matiereService:MatiereService,
+    private matiereService: MatiereService,
     private router: Router,
     private snackBar: MatSnackBar,
     private formBuilder: FormBuilder
@@ -43,10 +43,10 @@ export class AddAssignmentComponent implements OnInit {
     this.formGroup = this.formBuilder.group({
       formArray: this.formBuilder.array([
         this.formBuilder.group({
-          nom: ['', Validators.required]
-        }),
-        this.formBuilder.group({
-          dateDeRendu: ['', Validators.required]
+          nom: ['', Validators.required],
+          dateDeRendu: ['', Validators.required],
+          auteur: ['', Validators.required]
+
         }),
         this.formBuilder.group({
           idMatiere: ['', Validators.required]
@@ -54,8 +54,25 @@ export class AddAssignmentComponent implements OnInit {
       ])
     });
 
-    this.matiereService.getMatieres().subscribe(matieres=>{
-      this.matieres=matieres;
+    // this.formGroup = this.formBuilder.group({
+    //   formArray: this.formBuilder.array([
+    //     this.formBuilder.group({
+    //       nom: ['', Validators.required]
+    //     }),
+    //     this.formBuilder.group({
+    //       dateDeRendu: ['', Validators.required]
+    //     }),
+    //     this.formBuilder.group({
+    //       idMatiere: ['', Validators.required]
+    //     }),
+    //     this.formBuilder.group({
+    //       auteur: ['', Validators.required]
+    //     })
+    //   ])
+    // });
+
+    this.matiereService.getMatieres().subscribe(matieres => {
+      this.matieres = matieres;
       console.log(matieres);
     })
 
@@ -70,14 +87,21 @@ export class AddAssignmentComponent implements OnInit {
   onSubmit() {
     let nouvelAssignment = new Assignment();
     nouvelAssignment.nom = this.formGroup.value.formArray[0].nom;
-    nouvelAssignment.dateDeRendu = this.formGroup.value.formArray[1].dateDeRendu;
-    nouvelAssignment.idMatiere=this.formGroup.value.formArray[2].idMatiere;
-    nouvelAssignment.note=null;
+    nouvelAssignment.dateDeRendu = this.formGroup.value.formArray[0].dateDeRendu;
+    console.log("idMatiere" + this.formGroup.value.formArray[1].idMatiere);
+    let i = this.matieres.findIndex(m => m._id === this.formGroup.value.formArray[1].idMatiere);
+    console.log("index" + i);
+    nouvelAssignment.matiere = this.matieres[i];
+    nouvelAssignment.auteur = this.formGroup.value.formArray[0].auteur;
+    nouvelAssignment.note = null;
     nouvelAssignment.rendu = false;
 
+
+    console.log("ita le =" + nouvelAssignment.matiere);
     this.assignmentsService.addAssignment(nouvelAssignment)
       .subscribe(reponse => {
         console.log(reponse.message);
+        console.log("assignment" + nouvelAssignment);
         this.snackBar.open('Nouvel assignment ajouté');
         // et on navigue vers la page d'accueil qui affiche la liste
         this.router.navigate(["/home"]);

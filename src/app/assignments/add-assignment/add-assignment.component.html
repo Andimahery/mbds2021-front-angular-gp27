@@ -1,12 +1,25 @@
 <form [formGroup]="formGroup" (ngSubmit)="onSubmit()">
   <mat-horizontal-stepper [linear]="isLinear" formArrayName="formArray" #stepper>
     <mat-step formGroupName="0" [stepControl]="formArray?.get([0])">
-      <ng-template matStepLabel>Remplissez le nom du devoir</ng-template>
-      <mat-form-field>
-        <mat-label>Nom du devoir</mat-label>
-        <input matInput placeholder="" formControlName="nom" required>
-      </mat-form-field>
-      <br><mat-divider></mat-divider><br>
+      <ng-template matStepLabel>Remplissez les informations du devoir</ng-template>
+      <div class="row">
+        <mat-form-field class="col-sm-4">
+          <mat-label>Nom du devoir</mat-label>
+          <input matInput placeholder="" formControlName="nom" required>
+        </mat-form-field>
+        <mat-form-field class="col-sm-4">
+          <mat-label>Choisissez une date</mat-label>
+          <input matInput [matDatepicker]="picker" formControlName="dateDeRendu" required>
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+        <mat-form-field class="col-sm-4">
+          <mat-label>Nom de l'élève</mat-label>
+          <input matInput placeholder="" formControlName="auteur" required>
+        </mat-form-field>
+      </div>
+      <br>
+      <mat-divider></mat-divider><br>
       <div>
         <button type="button" mat-raised-button matStepperNext>Suivant</button>
       </div>
@@ -14,35 +27,18 @@
 
     <mat-step formGroupName="1" [stepControl]="formArray?.get([1])">
       <ng-template matStepLabel>
-        <div>Remplissez la date de rendu du devoir</div>
-      </ng-template>
-      <mat-form-field>
-        <mat-label>Choisissez une date</mat-label>
-        <input matInput [matDatepicker]="picker" formControlName="dateDeRendu" required>
-        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-        <mat-datepicker #picker></mat-datepicker>
-      </mat-form-field>
-      <br><mat-divider></mat-divider><br>
-      <div>
-        <button type="button" mat-raised-button matStepperPrevious>Précédent</button>
-        &nbsp;
-        <button type="button" mat-raised-button matStepperNext>Suivant</button>
-      </div>
-    </mat-step>
-
-    <mat-step formGroupName="2" [stepControl]="formArray?.get([2])">
-      <ng-template matStepLabel>
         <div>Choisissez une matière</div>
       </ng-template>
       <mat-form-field appearance="fill">
-        <mat-label>Matiere</mat-label>
-        <select matNativeControl   formControlName="idMatiere" required [(ngModel)]="idMatiere">
-          <option *ngFor="let m of matieres" [value]="m._id">
-            {{m.matiere}}
-          </option>
-        </select>
+        <mat-label>Matière</mat-label>
+        <mat-select matNativeControl formControlName="idMatiere" required>
+          <mat-option *ngFor="let m of matieres" [value]="m._id">
+            {{m.nom}}
+          </mat-option>
+        </mat-select>
       </mat-form-field>
-      <br><mat-divider></mat-divider><br>
+      <br>
+      <mat-divider></mat-divider><br>
       <div>
         <button type="button" mat-raised-button matStepperPrevious>Précédent</button>
         &nbsp;
@@ -50,18 +46,20 @@
       </div>
     </mat-step>
 
-      <mat-step>
-        <ng-template matStepLabel>Confirmation</ng-template>
-        <p>Terminé.</p>
-        <p>Vous pouvez maintenant ajouter votre nouveau devoir.</p>
-        <mat-divider></mat-divider><br>
-        <div>
-          <button type="button" mat-raised-button matStepperPrevious>Précédent</button>
-          &nbsp;
-          <button type="button" mat-raised-button (click)="stepper.reset()">Réinitialiser</button>
-          &nbsp;
-          <button type="submit" mat-raised-button color="primary" matStepperNext>Ajouter un devoir</button>
-        </div>
-      </mat-step>
+
+
+    <mat-step>
+      <ng-template matStepLabel>Confirmation</ng-template>
+      <p>Terminé.</p>
+      <p>Vous pouvez maintenant ajouter votre nouveau devoir.</p>
+      <mat-divider></mat-divider><br>
+      <div>
+        <button type="button" mat-raised-button matStepperPrevious>Précédent</button>
+        &nbsp;
+        <button type="button" mat-raised-button (click)="stepper.reset()">Réinitialiser</button>
+        &nbsp;
+        <button type="submit" mat-raised-button color="primary" matStepperNext>Ajouter un devoir</button>
+      </div>
+    </mat-step>
   </mat-horizontal-stepper>
 </form>

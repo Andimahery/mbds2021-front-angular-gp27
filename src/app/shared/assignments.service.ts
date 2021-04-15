@@ -14,6 +14,8 @@ export class AssignmentsService {
 
   constructor(private loggingService:LoggingService, private http:HttpClient) { }
 
+  // uri="https://assignments-back-groupe27.herokuapp.com/api/assignments"
+
   uri = "http://localhost:8010/api/assignments";
 
   getAssignments():Observable<Assignment[]> {
@@ -85,8 +87,6 @@ export class AssignmentsService {
     //this.loggingService.log(assignment.nom, " a été ajouté");
 
     /*this.assignments.push(assignment);
-
-
     return of("Service: assignment ajouté !");*/
 
     return this.http.post(this.uri, assignment);
@@ -107,7 +107,6 @@ export class AssignmentsService {
   deleteAssignment(assignment:Assignment):Observable<any> {
     /*
     let index = this.assignments.indexOf(assignment);
-
     this.assignments.splice(index, 1);
     */
 

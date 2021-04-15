@@ -50,6 +50,7 @@
           </mat-card-header>
         </a>
         <mat-card-content>
+          <p>Auteur: {{a.auteur}}</p>
           <span *ngIf="a.rendu; else nonsoumis" appRendu>
             Rendu par l'élève.
           </span>

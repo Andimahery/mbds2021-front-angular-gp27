@@ -99,7 +99,7 @@ export class AssignmentsService {
     //let index = this.assignments.indexOf(assignment);
 
     //console.log("updateAssignment l'assignment passé en param est à la position " + index + " du tableau");
-    this.loggingService.log(assignment.nom, " a été modifié");
+    this.loggingService.log(assignment.remarque, " a été modifié service");
 
     return this.http.put(this.uri, assignment);
   }

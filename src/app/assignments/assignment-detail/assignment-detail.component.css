@@ -8,6 +8,7 @@
   align-items: flex-end;
 }
 
+<<<<<<< HEAD
 .center {
   display: block;
   margin-left: auto;
@@ -38,4 +39,11 @@
   text-align: center;
   color: rgba(0,0,0,.54);
   font-size: 14px;
+=======
+.form {
+  display:flex;
+  flex-direction: column;
+  margin:5px;
+  height:100%;
+>>>>>>> 359a0eac97eb62f0f306512e9b62cde3c0166e11
 }

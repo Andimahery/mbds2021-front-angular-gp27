@@ -1,0 +1,20 @@
+<h5 mat-dialog-title>Attribuer une note au devoir</h5>
+<form  [formGroup]="noteForm" class="form" (ngSubmit)="onSubmit()">
+    <div mat-dialog-content>
+        <mat-form-field>
+            <mat-label>Note</mat-label>
+            <input matInput placeholder=""  type="number"  min="0" max="20" [(ngModel)]="note" formControlName="note" required>
+        </mat-form-field>
+        <mat-divider></mat-divider><br>
+        <mat-form-field>
+            <mat-label>Remarque</mat-label>
+            <textarea matInput placeholder="" formControlName="remarque" [(ngModel)]="remarque" required></textarea>
+        </mat-form-field>
+    </div>
+    <div mat-dialog-actions>
+        <button mat-button mat-dialog-close (click)="closeDialog()" >Fermer</button>
+        <button type="submit" mat-stroked-button color="primary" [disabled]="!noteForm.valid">
+            valider
+        </button>
+    </div>
+</form>

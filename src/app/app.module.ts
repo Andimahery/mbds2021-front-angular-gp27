@@ -29,6 +29,7 @@ import { RenduDirective } from './shared/rendu.directive';
 import { NonRenduDirective } from './shared/non-rendu.directive';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AssignmentDetailComponent } from './assignments/assignment-detail/assignment-detail.component';
+import { AjoutNoteDialog } from './assignments/assignment-detail/assignment-detail.component';
 import { AddAssignmentComponent } from './assignments/add-assignment/add-assignment.component';
 import { Routes, RouterModule } from '@angular/router';
 import { EditAssigmentComponent } from './assignments/edit-assigment/edit-assigment.component';
@@ -51,7 +52,8 @@ const routes: Routes = [
     path: "",
     component: LoginComponent,
     //redirectTo: "/home",
-    //pathMatch: "full"
+    pathMatch: "full",
+    data:{header:false}
   },
   {
     // idem avec  http://localhost:4200/home
@@ -78,7 +80,7 @@ const routes: Routes = [
     path: "assignment/:id/edit",
     component: EditAssigmentComponent,
     data: { title: "Modification d'un assignment" },
-    canActivate: [AuthGuard]
+    //canActivate: [AuthGuard]
   },  {
     path: "matieres",
     component: MatieresComponent,
@@ -99,7 +101,7 @@ const routes: Routes = [
     MenuComponent,
     LoginComponent,
     MatieresComponent,
-    RegisterComponent
+    RegisterComponent,AjoutNoteDialog
   ],
   imports: [
     BrowserModule,

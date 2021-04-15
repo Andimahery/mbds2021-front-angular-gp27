@@ -31,6 +31,9 @@ export class AppComponent {
           if (child.snapshot.data['title']) {
             return child.snapshot.data['title'];
           }
+          if (child.snapshot.data['header']) {
+            return child.snapshot.data['header'];
+          }
           return appTitle;
         })
       ).subscribe((ttl: string) => {

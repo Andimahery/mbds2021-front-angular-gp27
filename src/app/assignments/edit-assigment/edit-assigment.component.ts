@@ -58,7 +58,7 @@ export class EditAssigmentComponent implements OnInit {
       }),
       this.formBuilder.group({
         idMatiere: ['', Validators.required]
-      })
+      }),
     ])
   });
 

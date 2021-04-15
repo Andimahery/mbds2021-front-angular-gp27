@@ -1,24 +1,5 @@
 <h2>Modification de l'assignment</h2>
 
-<form ngForm #formAssignment class="form" (submit)="onSubmit();">
-  <mat-form-field>
-    <input matInput placeholder="Nom du devoir" required [(ngModel)]="nom" name="nom">
-  </mat-form-field>
-
-  <mat-form-field appearance="fill">
-    <mat-label>Choisissez une date</mat-label>
-    <input matInput [matDatepicker]="picker" required [(ngModel)]="dateDeRendu" name="date">
-
-    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-
-    <mat-datepicker #picker></mat-datepicker>
-  </mat-form-field>
-
-  <button mat-stroked-button color="primary">
-    Modifier le devoir
-  </button>
-</form>
-
 <form [formGroup]="formGroup" (ngSubmit)="onSubmit()">
   <mat-horizontal-stepper [linear]="isLinear" formArrayName="formArray" #stepper>
     <mat-step formGroupName="0" [stepControl]="formArray?.get([0])">
@@ -70,16 +51,13 @@
 
 
     <mat-step>
-      <ng-template matStepLabel>Confirmation</ng-template>
-      <p>Terminé.</p>
-      <p>Vous pouvez maintenant ajouter votre nouveau devoir.</p>
-      <mat-divider></mat-divider><br>
+      <ng-template matStepLabel>Valider votre modification</ng-template>
       <div>
         <button type="button" mat-raised-button matStepperPrevious>Précédent</button>
         &nbsp;
         <button type="button" mat-raised-button (click)="stepper.reset()">Réinitialiser</button>
         &nbsp;
-        <button type="submit" mat-raised-button color="primary" matStepperNext>Ajouter un devoir</button>
+        <button type="submit" mat-raised-button color="primary" matStepperNext>Modifier le devoir</button>
       </div>
     </mat-step>
   </mat-horizontal-stepper>

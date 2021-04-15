@@ -13,7 +13,7 @@ import { Assignment } from './assignment.model';
 export class AssignmentsComponent implements OnInit {
   assignments: Assignment[];
   page: number = 1;
-  limit: number = 10;
+  limit: number = 12;
   totalDocs: number;
   totalPages: number;
   hasPrevPage: boolean;
@@ -21,7 +21,8 @@ export class AssignmentsComponent implements OnInit {
   hasNextPage: boolean;
   nextPage: number;
   listePage: number[];
-  sizeList: number[] = [5, 10, 15, 20];
+  sizeList: number[] = [12, 24, 36, 48];
+  show = false;
 
   // on injecte le service de gestion des assignments
   constructor(
@@ -67,6 +68,8 @@ export class AssignmentsComponent implements OnInit {
   }
 
   getAssignments() {
+    this.show = true;
+    this.assignments = [];
     this.assignmentsService.getAssignmentsPagine(this.page, this.limit).subscribe(data => {
       this.assignments = data.docs;
       this.page = data.page;
@@ -81,6 +84,7 @@ export class AssignmentsComponent implements OnInit {
       this.listePage.push(1);
       if (this.page != 1 && this.page != this.totalPages) this.listePage.push(this.page);
       if (this.page < this.totalPages) this.listePage.push(this.page + 1);
+      this.show = false;
       console.log(data.docs);
     });
   }

@@ -1,19 +1,72 @@
 <div class="container">
   <mat-card *ngIf="assignmentTransmis">
-    <mat-card-title>{{assignmentTransmis.nom}}</mat-card-title>
-    <mat-card-subtitle>{{assignmentTransmis.dateDeRendu | date}}</mat-card-subtitle>
+    <mat-card-header>
+      <div mat-card-avatar class="header-image">
+        <img src="{{assignmentTransmis.matiere.pathImage}}" alt="{{assignmentTransmis.matiere.nom}}" class="center">
+      </div>
+      <mat-card-title>{{assignmentTransmis.nom}}</mat-card-title>
+      <mat-card-subtitle>{{assignmentTransmis.matiere.nom}}</mat-card-subtitle>
+      <div class="prof">
+        <div class="prof-image">
+          <img src="{{assignmentTransmis.matiere.prof.pathProfesseur}}" alt="{{assignmentTransmis.matiere.prof.nomProfesseur}}" class="center">
+        </div>
+        <div class="prof-nom">{{assignmentTransmis.matiere.prof.nomProfesseur}}</div>
+      </div>
+    </mat-card-header>
+
+    <mat-card-content>
+      <!-- <p>Auteur: {{assignmentTransmis.auteur}}</p>
+      <p>Note: <span *ngIf="assignmentTransmis.note != null">{{assignmentTransmis.note}}</span><span *ngIf="assignmentTransmis.note == null">-</span></p>
+      <p>Remarques: <span *ngIf="assignmentTransmis.remarque != null">{{assignmentTransmis.remarque}}</span><span *ngIf="assignmentTransmis.remarque == null">-</span></p>
+      <p>Date de rendu: {{assignmentTransmis.dateDeRendu | date}}</p> -->
+
+      <div class="row">
+        <div class="col-sm-3">
+          <label class="form-control">Auteur:</label>
+        </div>
+        <div class="col-sm-9">
+          <input type="text" class="form-control" value="{{assignmentTransmis.auteur}}" readonly>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-3">
+          <label class="form-control">Note:</label>
+        </div>
+        <div class="col-sm-9">
+          <input *ngIf="assignmentTransmis.note != null" type="text" class="form-control" value="{{assignmentTransmis.note}}" readonly>
+          <input *ngIf="assignmentTransmis.note == null" type="text" class="form-control" value="-" readonly>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-3">
+          <label class="form-control">Remarques:</label>
+        </div>
+        <div class="col-sm-9">
+          <textarea rows="1" *ngIf="assignmentTransmis.remarque != null" type="text" class="form-control" value="{{assignmentTransmis.remarque}}" readonly></textarea>
+          <textarea rows="1" *ngIf="assignmentTransmis.remarque == null" type="text" class="form-control" value="-" readonly></textarea>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-3">
+          <label class="form-control">Date de rendu:</label>
+        </div>
+        <div class="col-sm-9">
+          <input type="text" class="form-control" value="{{assignmentTransmis.dateDeRendu | date}}" readonly>
+        </div>
+      </div>
+    </mat-card-content>
+
+    <!-- <mat-card-title>{{assignmentTransmis.nom}}</mat-card-title>
+    <mat-card-subtitle>{{assignmentTransmis.dateDeRendu | date}}</mat-card-subtitle> -->
     <div id="bottom">
       <mat-checkbox *ngIf="!assignmentTransmis.rendu" (click)="onAssignmentRendu()">
         Rendu
       </mat-checkbox>
       <nav>
-
           <button [disabled]="!isAdmin()" mat-stroked-button color="primary" (click)="onClickEdit()">EDIT</button>
-
       </nav>
-
-
       <button mat-stroked-button color="warn" (click)="onDelete()">DELETE</button>
     </div>
   </mat-card>
+  <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 </div>

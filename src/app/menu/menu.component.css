@@ -1,0 +1,40 @@
+ul {
+    list-style-type: none;
+    margin: 5px;
+    padding: 0;
+}
+li{
+    margin-top:5px;
+}
+
+li{
+    margin-top:5px;
+    transition: 0.5s;
+}
+li:hover{
+    background-color: rgb(48, 63, 159, 0.9);
+    border-radius: 5px;
+    color: rgb(255, 255, 255, 0.9);
+}
+li:hover > a {
+    color: white;
+}
+.active{
+    background-color: rgb(48, 63, 159, 0.9);
+    border-radius: 5px;
+    color: rgb(255, 255, 255, 1);
+}
+.active:hover{
+    background-color: rgb(48, 63, 159, 0.9);
+    border-radius: 5px;
+    color: rgb(255, 255, 255, 0.9);
+}
+.active > a{
+    color: white;
+}
+a{
+    color: rgb(20, 20, 20);
+}
+.vertical-center{
+    vertical-align: middle;
+}

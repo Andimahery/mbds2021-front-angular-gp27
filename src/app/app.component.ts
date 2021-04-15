@@ -2,8 +2,6 @@ import { Component } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { filter, map } from 'rxjs/operators';
-import { AssignmentsService } from './shared/assignments.service';
-import { AuthService } from './shared/auth.service';
 
 @Component({
   selector: 'app-root',
@@ -12,13 +10,13 @@ import { AuthService } from './shared/auth.service';
 })
 export class AppComponent {
   title = 'Application de gestion des assignments';
+  events: string[] = [];
+  opened: boolean = true;
 
   constructor(
-    private authService: AuthService,
     private router: Router,
     private activatedRoute: ActivatedRoute,
     private titleService: Title,
-    private assignmentsService: AssignmentsService
   ) { }
 
   ngOnInit() {
@@ -53,15 +51,4 @@ export class AppComponent {
        this.authService.logIn("admin", "toto");
      }
    }*/
-
-  peuplerBD() {
-    // version naive et simple
-    //this.assignmentsService.peuplerBD();
-
-    // meilleure version :
-    this.assignmentsService.peuplerBDAvecForkJoin().subscribe(() => {
-      console.log("LA BD A ETE PEUPLEE, TOUS LES ASSIGNMENTS AJOUTES, ON RE-AFFICHE LA LISTE");
-      this.router.navigate(["/home"], { replaceUrl: true });
-    });
-  }
 }

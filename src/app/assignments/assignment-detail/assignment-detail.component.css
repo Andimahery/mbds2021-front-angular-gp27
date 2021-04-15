@@ -7,3 +7,35 @@
   justify-content: space-between;
   align-items: flex-end;
 }
+
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+  height: 100%;
+}
+
+.prof{
+  position: absolute;
+  right: 20px;
+  width: 150px;
+}
+
+.prof-image{
+  position: relative;
+  margin: auto;
+  height: 40px;
+  width: 40px;
+}
+
+.prof-image > img{
+  border-radius: 100%;
+}
+
+.prof-nom{
+  position: relative;
+  text-align: center;
+  color: rgba(0,0,0,.54);
+  font-size: 14px;
+}

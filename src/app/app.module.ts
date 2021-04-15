@@ -18,6 +18,9 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatStepperModule } from '@angular/material/stepper';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
+
 import { MatSnackBarModule, MAT_SNACK_BAR_DEFAULT_OPTIONS } from '@angular/material/snack-bar';
 
 /////
@@ -42,6 +45,7 @@ import { MatieresComponent } from './matieres/matieres.component';
 import { RegisterComponent } from './register/register.component';
 import { registerLocaleData } from '@angular/common';
 import localeFr from '@angular/common/locales/fr';
+import { PeuplerComponent } from './peupler/peupler.component';
 registerLocaleData(localeFr, 'fr');
 
 const routes: Routes = [
@@ -84,6 +88,11 @@ const routes: Routes = [
     component: MatieresComponent,
     data: { title: "Listes des matieres" }
   },
+  {
+    path: "peupler",
+    component: PeuplerComponent,
+    data: { title: "Peupler BDD" }
+  },
 ]
 @NgModule({
   declarations: [
@@ -99,7 +108,8 @@ const routes: Routes = [
     MenuComponent,
     LoginComponent,
     MatieresComponent,
-    RegisterComponent
+    RegisterComponent,
+    PeuplerComponent
   ],
   imports: [
     BrowserModule,
@@ -116,12 +126,14 @@ const routes: Routes = [
     MatSnackBarModule,
     MatStepperModule,
     MatTableModule,
+    MatSidenavModule,
+    MatProgressBarModule,
     RouterModule.forRoot(routes), HttpClientModule
   ],
   providers: [
     Title,
     { provide: LOCALE_ID, useValue: "fr-FR" },
-    { provide: MAT_SNACK_BAR_DEFAULT_OPTIONS, useValue: { duration: 2500 } }
+    { provide: MAT_SNACK_BAR_DEFAULT_OPTIONS, useValue: { duration: 5000 } }
   ],
   bootstrap: [AppComponent]
 })

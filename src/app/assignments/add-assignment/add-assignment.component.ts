@@ -18,6 +18,7 @@ export class AddAssignmentComponent implements OnInit {
   // Pour les champs du formulaire
   nom = '';
   dateDeRendu = null;
+  nomProf;
 
   idMatiere = '';
   matieres: Matiere[];
@@ -89,7 +90,7 @@ export class AddAssignmentComponent implements OnInit {
     nouvelAssignment.nom = this.formGroup.value.formArray[0].nom;
     nouvelAssignment.dateDeRendu = this.formGroup.value.formArray[0].dateDeRendu;
     console.log("idMatiere" + this.formGroup.value.formArray[1].idMatiere);
-    let i = this.matieres.findIndex(m => m._id === this.formGroup.value.formArray[1].idMatiere);
+    const i = this.matieres.findIndex(m => m._id === this.formGroup.value.formArray[1].idMatiere);
     console.log("index" + i);
     nouvelAssignment.matiere = this.matieres[i];
     nouvelAssignment.auteur = this.formGroup.value.formArray[0].auteur;
@@ -106,6 +107,11 @@ export class AddAssignmentComponent implements OnInit {
         // et on navigue vers la page d'accueil qui affiche la liste
         this.router.navigate(["/home"]);
       });
+  }
+
+  changeMatiere(val){
+    const i = this.matieres.findIndex(m => m._id === val);
+    this.nomProf = this.matieres[i].prof.nomProfesseur;
   }
 
 }

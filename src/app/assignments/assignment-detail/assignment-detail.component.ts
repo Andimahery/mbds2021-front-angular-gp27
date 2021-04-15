@@ -32,6 +32,7 @@ export class AssignmentDetailComponent implements OnInit {
     console.log('Dans ngOnInit de details, id = ' + id);
     this.assignmentsService.getAssignment(id).subscribe((assignment) => {
       this.assignmentTransmis = assignment;
+      console.log(this.assignmentTransmis);
     });
   }
 

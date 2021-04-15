@@ -32,3 +32,6 @@
   width: 40px;
   float: right;
 }
+.prof-image > img {
+  border-radius: 100%;
+}

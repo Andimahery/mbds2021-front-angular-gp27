@@ -29,13 +29,18 @@
       <ng-template matStepLabel>
         <div>Choisissez une matière</div>
       </ng-template>
-      <mat-form-field appearance="fill">
+      <mat-form-field>
         <mat-label>Matière</mat-label>
-        <mat-select matNativeControl formControlName="idMatiere" required>
+        <mat-select matNativeControl (selectionChange)="changeMatiere($event.value)" formControlName="idMatiere" required>
           <mat-option *ngFor="let m of matieres" [value]="m._id">
             {{m.nom}}
           </mat-option>
         </mat-select>
+      </mat-form-field>
+      &nbsp;&nbsp;&nbsp;
+      <mat-form-field *ngIf="nomProf">
+        <mat-label>Professeur</mat-label>
+        <input matInput value="{{nomProf}}" readonly>
       </mat-form-field>
       <br>
       <mat-divider></mat-divider><br>

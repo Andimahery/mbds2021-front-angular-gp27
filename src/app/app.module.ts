@@ -54,10 +54,17 @@ const routes: Routes = [
     // indique que http://localhost:4200 sans rien ou avec un "/" à la fin
     // doit afficher le composant AssignmentsComponent (celui qui affiche la liste)
     path: "",
-    component: LoginComponent,
-    //redirectTo: "/home",
+    redirectTo: "/home",
     pathMatch: "full",
     data:{header:false}
+  },
+  {
+    // indique que http://localhost:4200 sans rien ou avec un "/" à la fin
+    // doit afficher le composant AssignmentsComponent (celui qui affiche la liste)
+    path: "login",
+    component: LoginComponent,
+    //redirectTo: "/home",
+    data: { title: "Connexion" },
   },
   {
     // idem avec  http://localhost:4200/home

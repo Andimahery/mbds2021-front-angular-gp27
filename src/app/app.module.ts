@@ -110,12 +110,10 @@ const routes: Routes = [
     MenuComponent,
     LoginComponent,
     MatieresComponent,
-<<<<<<< HEAD
     RegisterComponent,
-    PeuplerComponent
-=======
-    RegisterComponent,AjoutNoteDialog
->>>>>>> 359a0eac97eb62f0f306512e9b62cde3c0166e11
+    PeuplerComponent,
+    RegisterComponent,
+    AjoutNoteDialog
   ],
   imports: [
     BrowserModule,

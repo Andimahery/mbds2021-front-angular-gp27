@@ -1,17 +1,15 @@
-   
-
-   
-   <div class="row">
-    <div class="col-sm-4">    </div>
-    <div  class="col-sm-4">    
-   <mat-card class="example-card">
+<div class="row">
+  <div class="col-sm-4"> </div>
+  <div class="col-sm-4">
+    <mat-card class="example-card">
       <mat-card-title color="primary">Connexion</mat-card-title>
       <form ngForm [formGroup]="loginForm" class="form" (submit)="onSubmit();">
         <mat-form-field>
-          <input matInput placeholder="Email" required [(ngModel)]="email" formControlName="email" >
+          <input matInput placeholder="Email" required [(ngModel)]="email" formControlName="email">
         </mat-form-field>
         <mat-form-field>
-          <input matInput placeholder="Mot de passe"  type="password" required [(ngModel)]="password"  class="example-full-width" formControlName="password">
+          <input matInput placeholder="Mot de passe" type="password" required [(ngModel)]="password"
+            class="example-full-width" formControlName="password">
         </mat-form-field>
 
         <button mat-stroked-button color="primary" [disabled]="!loginForm.valid">
@@ -36,5 +34,5 @@
       </form>
     </mat-card>
   </div>
-  </div>
-
+</div>
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>

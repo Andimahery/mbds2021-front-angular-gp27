@@ -54,6 +54,15 @@
           <input type="text" class="form-control" value="{{assignmentTransmis.dateDeRendu | date}}" readonly>
         </div>
       </div>
+      <div class="row">
+        <div class="col-sm-3">
+          <label class="form-control">Etat:</label>
+        </div>
+        <div class="col-sm-9">
+          <input *ngIf="assignmentTransmis.rendu" type="text" class="form-control" value="RENDU" readonly>
+          <input *ngIf="!assignmentTransmis.rendu" type="text" class="form-control" value="NON RENDU" readonly>
+        </div>
+      </div>
     </mat-card-content>
 
     <!-- <mat-card-title>{{assignmentTransmis.nom}}</mat-card-title>
@@ -63,9 +72,11 @@
         Rendu
       </mat-checkbox>-->
 
-      <mat-checkbox *ngIf="!assignmentTransmis.rendu" (click)="openDialog()">
+      <button *ngIf="!assignmentTransmis.rendu" mat-stroked-button color="primary" (click)="openDialog()">RENDRE</button>
+
+      <!-- <mat-checkbox *ngIf="!assignmentTransmis.rendu" (click)="openDialog()">
         Rendu
-      </mat-checkbox>
+      </mat-checkbox> -->
       <nav>
           <button [disabled]="!isAdmin()" mat-stroked-button color="primary" (click)="onClickEdit()">EDIT</button>
       </nav>

@@ -42,19 +42,19 @@ export class AssignmentDetailComponent implements OnInit {
     });
   }
 
- /* onAssignmentRendu() {
-    this.assignmentTransmis.rendu = true;
-
-    this.assignmentsService
-      .updateAssignment(this.assignmentTransmis)
-      .subscribe((reponse) => {
-        console.log(reponse.message);
-        // et on navigue vers la page d'accueil qui affiche la liste
-        this.router.navigate(['/home']);
-      });
-
-    //this.assignmentTransmis = null;
-  }*/
+  /* onAssignmentRendu() {
+     this.assignmentTransmis.rendu = true;
+ 
+     this.assignmentsService
+       .updateAssignment(this.assignmentTransmis)
+       .subscribe((reponse) => {
+         console.log(reponse.message);
+         // et on navigue vers la page d'accueil qui affiche la liste
+         this.router.navigate(['/home']);
+       });
+ 
+     //this.assignmentTransmis = null;
+   }*/
 
   /* openDialog() {
      this.dialog.open(DialogElementsExampleDialog);
@@ -63,7 +63,7 @@ export class AssignmentDetailComponent implements OnInit {
 
   openDialog(): void {
     const idAssignment: number = +this.route.snapshot.params.id;
-    const dialogRef = this.dialog.open(AjoutNoteDialog, {
+    this.dialog.open(AjoutNoteDialog, {
       width: '500px',
       backdropClass: 'custom-dialog-backdrop-class',
       panelClass: 'custom-dialog-panel-class',
@@ -107,11 +107,11 @@ export class AssignmentDetailComponent implements OnInit {
   styleUrls: ['./assignment-detail.component.css']
 })
 export class AjoutNoteDialog {
-  id:number= null;
+  id: number = null;
   assignmentTransmis: Assignment;
   remarque = "";
   note = null;
-  public noteForm : FormGroup;
+  public noteForm: FormGroup;
   constructor(
     public dialogRef: MatDialogRef<AjoutNoteDialog>,
     private assignmentsService: AssignmentsService,
@@ -122,8 +122,8 @@ export class AjoutNoteDialog {
   ) {
     this.id = data.id;
     this.noteForm = this.formBuilder.group({
-      note: ['',[Validators.required]],
-      remarque: ['',Validators.required]
+      note: ['', [Validators.required]],
+      remarque: ['', Validators.required]
     });
   }
 
@@ -139,6 +139,11 @@ export class AjoutNoteDialog {
     });
   }
 
+  redirectTo(uri: string) {
+    this.router.navigateByUrl('/', { skipLocationChange: true }).then(() =>
+      this.router.navigate([uri]));
+  }
+
   onSubmit() {
 
     this.assignmentTransmis.rendu = true;
@@ -151,12 +156,8 @@ export class AjoutNoteDialog {
         console.log(reponse.message);
         this.snackBar.open('Le devoir a été noté');
         this.dialogRef.close({ event: 'close' });
-        this.router.navigate(['/assignment/'+this.id]);
-        
+        this.redirectTo('/assignment/' + this.id);
       });
-
-
-
 
   }
 

@@ -14,13 +14,13 @@ import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/fo
   styleUrls: ['./edit-assigment.component.css']
 })
 export class EditAssigmentComponent implements OnInit {
-  assignment:Assignment;
+  assignment: Assignment;
 
   // pour le formulaire
   nom = "";
   dateDeRendu = null;
-  auteur='';
-  idMatiere=null;
+  auteur = '';
+  idMatiere = null;
   matieres: Matiere[];
 
   isLinear = true;
@@ -46,26 +46,26 @@ export class EditAssigmentComponent implements OnInit {
     // http://localhost:4200/assignment/1/edit?nom=Michel%20Buffa&metier=Professeur&responsable=MIAGE#edition
 
 
-  /** Returns a FormArray with the name 'formArray'. */
+    /** Returns a FormArray with the name 'formArray'. */
 
-  this.formGroup = this.formBuilder.group({
-    formArray: this.formBuilder.array([
-      this.formBuilder.group({
-        nom: ['', Validators.required],
-        dateDeRendu: ['', Validators.required],
-        auteur: ['', Validators.required]
+    this.formGroup = this.formBuilder.group({
+      formArray: this.formBuilder.array([
+        this.formBuilder.group({
+          nom: ['', Validators.required],
+          dateDeRendu: ['', Validators.required],
+          auteur: ['', Validators.required]
 
-      }),
-      this.formBuilder.group({
-        idMatiere: ['', Validators.required]
-      }),
-    ])
-  });
+        }),
+        this.formBuilder.group({
+          idMatiere: ['', Validators.required]
+        }),
+      ])
+    });
 
-  this.matiereService.getMatieres().subscribe(matieres => {
-    this.matieres = matieres;
-    console.log(matieres);
-  })
+    this.matiereService.getMatieres().subscribe(matieres => {
+      this.matieres = matieres;
+      console.log(matieres);
+    })
 
     this.getAssignmentById();
   }
@@ -81,24 +81,22 @@ export class EditAssigmentComponent implements OnInit {
 
       this.nom = assignment.nom;
       this.dateDeRendu = assignment.dateDeRendu;
-      this.auteur =assignment.auteur;
-      this.idMatiere=assignment.matiere.id;
-
-
-
+      this.auteur = assignment.auteur;
+      this.idMatiere = assignment.matiere.id;
+      console.log(this.idMatiere);
     });
   }
 
 
   onSubmit() {
     // on va modifier l'assignment
-    if((!this.nom) || (!this.dateDeRendu)) return;
+    if ((!this.nom) || (!this.dateDeRendu)) return;
 
     this.assignment.nom = this.nom;
     this.assignment.dateDeRendu = this.dateDeRendu;
-    this.assignment.auteur=this.auteur;
-    let i = this.matieres.findIndex(m => m._id === this.formGroup.value.formArray[1].idMatiere);
-    this.assignment.matiere=this.matieres[i];
+    this.assignment.auteur = this.auteur;
+    let i = this.matieres.findIndex(m => m.id === this.formGroup.value.formArray[1].idMatiere);
+    this.assignment.matiere = this.matieres[i];
 
     this.assignmentsService.updateAssignment(this.assignment)
       .subscribe(message => {

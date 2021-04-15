@@ -31,10 +31,10 @@
       <ng-template matStepLabel>
         <div>Choisissez une matière</div>
       </ng-template>
-      <mat-form-field appearance="fill">
+      <mat-form-field>
         <mat-label>Matière</mat-label>
         <mat-select matNativeControl formControlName="idMatiere" [(ngModel)]="idMatiere" required>
-          <mat-option *ngFor="let m of matieres" [value]="m._id">
+          <mat-option *ngFor="let m of matieres" [value]="m.id">
             {{m.nom}}
           </mat-option>
         </mat-select>

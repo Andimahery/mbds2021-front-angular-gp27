@@ -1,27 +1,27 @@
-# AssignmentApp
+# AssignmentApp du Group N°27
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.2.3.
+Une application de gestion de devoir
 
-## Development server
+ - Lien heroku : https://assignments-front-groupe27.herokuapp.com/
+ - Login admin : mama@gmail.com / mama
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+## Les membres du groupe qui ont contribué au développement
+  -	ANDRIAMBAHOAKA Mahery Joela N°4
+  -	RASOLOFO Andimahery Loic  N ° 48
 
-## Code scaffolding
+## Fonctionnalités ajoutés à l'application
+   - Login/password avec Json Web Tokens (JWT) et gestion du cas particulier pour l'admininistrateur
+   - Nouvelles propriétés au modèle des Assignments (Auteur / Matiere avec Image / Professeur avec Image / Note / Remarque)
+   - Amélioration de l'affichage des Assignments
+   - Ajout collection des données
+   - Bouton pour peupler la base de données avec 1500 devoirs
+    -Affichage d'un snack bar pour les messages de notification
+    -Amélioration de l'affichage de l'application
+		-Ajout d'un loader
+		- Affichage liste des matieres
+		- Utilisation d 'un Formulaire de type Stepper (formulaire en plusieurs étapes) pour l'ajout d'Assignments (éventuellement pour la modification)
+		- Affichage liste des matières
+## Documentation
+ -JWT (JSON Web Token) : https://www.freecodecamp.org/news/securing-node-js-restful-apis-with-json-web-tokens-9f811a92bb52/
+ - Composants Angular Material : https://material.angular.io/components/
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
